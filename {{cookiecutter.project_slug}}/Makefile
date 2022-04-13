@@ -19,9 +19,6 @@ requirements-dev.txt: requirements-test.txt
 	.venv/bin/pip install -r requirements-dev.txt
 	.venv/bin/pip install -e ".[dev]"
 
-.coverage: $(SOURCES) $(TESTS)
-	.venv/bin/pytest --cov={{cookiecutter.project_slug}} test/
-
 .PHONY: help
 help: ## Show Makefile targets and descriptions
 	@echo 'Usage: make [target] ...'
@@ -45,7 +42,8 @@ lint: ## Run code linting
 	.venv/bin/mypy src/
 
 .PHONY: test
-test: lint .coverage ## Run tests and code linting
+test: ## Run tests and generate coverage report
+	.venv/bin/pytest --cov={{cookiecutter.project_slug}} test/
 
 .PHONY: clean
 clean: ## Cleanup build and dev artifacts
