@@ -19,7 +19,6 @@ TEST_REQUIRES = INSTALL_REQUIRES + [
     "prospector",
     "mypy",
     "flake8",
-    "flake8-mypy",
     "flake8-black",
     "flake8-bugbear",
     "flake8-isort",
